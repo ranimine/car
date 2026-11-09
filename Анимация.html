@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Анимация</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #eef2f7;
+  display: flex;
+  align-items: flex-end;
+}
+.bike {
+  position: relative;
+  width: 200px;
+  height: 124px;
+  margin-bottom: 40px;
+  animation: ride 5s ease-out forwards;
+}
+.bike::before,
+.bike::after {
+  content: "";
+  position: absolute;
+  top: 76px;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #33373d;
+  border-radius: 50%;
+  background: radial-gradient(circle, #33373d 5px, transparent 5px);
+  animation: spin 5s ease-out forwards;
+}
+.bike::before { left: 12px; }
+.bike::after { left: 140px; }
+.spokes {
+  position: absolute;
+  top: 76px;
+  width: 48px;
+  height: 48px;
+  animation: spin 5s ease-out forwards;
+}
+.spokes.f { left: 12px; }
+.spokes.r { left: 140px; }
+.spokes::before,
+.spokes::after {
+  content: "";
+  position: absolute;
+  background: #33373d;
+  border-radius: 2px;
+}
+.spokes::before {
+  left: 0;
+  top: 50%;
+  margin-top: -2px;
+  width: 100%;
+  height: 4px;
+}
+.spokes::after {
+  top: 0;
+  left: 50%;
+  margin-left: -2px;
+  height: 100%;
+  width: 4px;
+}
+.frame::before,
+.frame::after,
+.tube::before,
+.tube::after,
+.bar::before,
+.bar::after,
+.seat::before,
+.seat::after {
+  content: "";
+  position: absolute;
+  height: 6px;
+  border-radius: 3px;
+  background: #e74c3c;
+}
+.frame::before {
+  left: 44px;
+  top: 66px;
+  width: 72px;
+  transform: rotate(-111deg);
+}
+.frame::after {
+  left: 33px;
+  top: 97px;
+  width: 62px;
+}
+.tube::before {
+  left: 79px;
+  top: 71px;
+  width: 82px;
+  transform: rotate(-43deg);
+}
+.tube::after {
+  left: 65px;
+  top: 34px;
+  width: 82px;
+  transform: rotate(-2deg);
+}
+.bar::before {
+  left: 116px;
+  top: 64px;
+  width: 75px;
+  transform: rotate(73deg);
+}
+.bar::after {
+  left: 130px;
+  top: 26px;
+  width: 28px;
+  background: #33373d;
+}
+.seat::before {
+  left: 53px;
+  top: 26px;
+  width: 30px;
+  height: 9px;
+  border-radius: 5px;
+  background: #33373d;
+}
+.seat::after {
+  left: 87px;
+  top: 103px;
+  width: 22px;
+  height: 4px;
+  border-radius: 2px;
+  background: #33373d;
+  transform: rotate(40deg);
+}
+@keyframes ride {
+  from { transform: translateX(-220px); }
+  to { transform: translateX(calc(100vw - 250px)); }
+}
+@keyframes spin {
+  from { transform: rotate(45deg); }
+  to { transform: rotate(765deg); }
+}
+</style>
+</head>
+<body>
+<div class="bike">
+  <div class="spokes f"></div>
+  <div class="spokes r"></div>
+  <div class="frame"></div>
+  <div class="tube"></div>
+  <div class="bar"></div>
+  <div class="seat"></div>
+</div>
+</body>
+</html>
